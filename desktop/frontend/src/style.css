@@ -1,0 +1,120 @@
+/*
+ * VoiceInput design tokens.
+ *
+ * Light + dark are wired both via [data-theme] (manual override) and via
+ * @media (prefers-color-scheme) for users who never touch the toggle.
+ * The palette is intentionally monochrome — accent only carries weight on
+ * interactive surfaces, never on plain text.
+ */
+
+:root, :root[data-theme="light"] {
+    color-scheme: light;
+    --bg:           #f5f5f7;
+    --bg-elevated:  #ffffff;
+    --bg-sunken:    #ebebed;
+    --fg:           #1a1a1c;
+    --fg-muted:     #6b6b73;
+    --fg-faint:     #a3a3aa;
+    --border:       rgba(0, 0, 0, 0.08);
+    --border-strong:rgba(0, 0, 0, 0.16);
+    --accent:       #1a1a1c;
+    --accent-soft:  rgba(26, 26, 28, 0.06);
+    --accent-ring:  rgba(26, 26, 28, 0.18);
+    --good:         #2c8a4a;
+    --warn:         #b5680b;
+    --bad:          #b53636;
+    --idle:         #9a9aa3;
+    --radius-sm:    6px;
+    --radius:       10px;
+    --radius-lg:    14px;
+    --shadow-flat:  inset 0 0 0 0.5px var(--border);
+    --ease:         cubic-bezier(0.32, 0.72, 0, 1);
+    --dur:          200ms;
+}
+
+:root[data-theme="dark"], :root[data-theme="auto"]:not([data-theme]) {
+    /* default fallback when toggle not yet set */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg:           #1a1a1c;
+        --bg-elevated:  #242427;
+        --bg-sunken:    #131316;
+        --fg:           #f2f2f5;
+        --fg-muted:     #9a9aa3;
+        --fg-faint:     #61616a;
+        --border:       rgba(255, 255, 255, 0.08);
+        --border-strong:rgba(255, 255, 255, 0.18);
+        --accent:       #f2f2f5;
+        --accent-soft:  rgba(242, 242, 245, 0.06);
+        --accent-ring:  rgba(242, 242, 245, 0.20);
+        --good:         #4fbf6f;
+        --warn:         #d18b3a;
+        --bad:          #e35a5a;
+        --idle:         #6a6a72;
+    }
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg:           #1a1a1c;
+    --bg-elevated:  #242427;
+    --bg-sunken:    #131316;
+    --fg:           #f2f2f5;
+    --fg-muted:     #9a9aa3;
+    --fg-faint:     #61616a;
+    --border:       rgba(255, 255, 255, 0.08);
+    --border-strong:rgba(255, 255, 255, 0.18);
+    --accent:       #f2f2f5;
+    --accent-soft:  rgba(242, 242, 245, 0.06);
+    --accent-ring:  rgba(242, 242, 245, 0.20);
+    --good:         #4fbf6f;
+    --warn:         #d18b3a;
+    --bad:          #e35a5a;
+    --idle:         #6a6a72;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+    margin: 0;
+    height: 100%;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 13px;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+code, kbd {
+    font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    font-size: 12px;
+    background: var(--accent-soft);
+    padding: 1px 6px;
+    border-radius: 5px;
+    letter-spacing: -0.01em;
+}
+
+/* Global selection */
+::selection { background: var(--accent-ring); }
+
+/* Scrollbars — pill, hover-only */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    transition: background var(--dur);
+}
+*:hover > ::-webkit-scrollbar-thumb,
+::-webkit-scrollbar:hover ::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    background-clip: padding-box;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Declares the VoiceInput IME to the system. The settings activity points
+     back at the main app so the user can manage devices / tokens. -->
+<input-method xmlns:android="http://schemas.android.com/apk/res/android"
+    android:settingsActivity="dev.voiceinput.mobile.MainActivity"
+    android:supportsSwitchingToNextInputMethod="true"
+    android:isDefault="false">
+    <subtype
+        android:label="@string/ime_subtype_voice"
+        android:imeSubtypeLocale="zh_CN"
+        android:imeSubtypeMode="keyboard"
+        android:isAsciiCapable="false" />
+</input-method>

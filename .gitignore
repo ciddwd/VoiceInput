@@ -1,0 +1,41 @@
+# --- Build outputs -----------------------------------------------------------
+desktop/build/
+desktop/frontend/dist/
+desktop/frontend/node_modules/
+mobile/build/
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/android/.gradle/
+mobile/android/.kotlin/
+mobile/android/local.properties
+mobile/android/app/build/
+# mobile/ios/ was fully ignored while the project was Android-only. iOS is now a
+# real target (PoC keyboard extensions), so rely on Flutter's own
+# mobile/ios/.gitignore to exclude build artifacts while keeping sources tracked.
+mobile/ios/build/
+mobile/ios/Pods/
+*.exe
+*.apk
+*.aab
+
+# --- IDE / editor ------------------------------------------------------------
+.idea/
+.vscode/
+*.iml
+
+# --- Claude / scratch / spec-workflow ----------------------------------------
+.claude/
+.spec-workflow/
+.tmp_*
+
+# --- OS ----------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+
+# --- User-local runtime files (never accidentally commit secrets) ------------
+# These live under the user's config dir at runtime but in case anyone
+# symlinks them into the repo we keep them out.
+peers.json
+settings.json
+snippets.db*
